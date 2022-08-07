@@ -8,5 +8,5 @@ class UserLoginForm(FlaskForm):
     submit_button = SubmitField()
 
 class searchpokemonform(FlaskForm):
-  name=StringField('Pokemon name',)
+  name=StringField('Pokemon name')
   submit=SubmitField()

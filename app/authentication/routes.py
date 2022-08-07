@@ -1,6 +1,8 @@
 from forms import UserLoginForm
 from models import User, db, check_password_hash
 from flask import Blueprint, render_template, request, redirect, url_for, flash
+import requests
+from forms import searchpokemonform
 
 from flask_login import login_user, logout_user, LoginManager, current_user, login_required
 
@@ -40,7 +42,7 @@ def signin():
             logged_user = User.query.filter(User.email == email).first()
             if logged_user and check_password_hash(logged_user.password, password):
                 login_user(logged_user)
-                flash('You were successful in your initiation. Congratulations, and welcome to the Jedi Knights', 'auth-success')
+                flash('Welcome Trainer!, 'auth-success')
                 return redirect(url_for('site.profile'))
             else:
                 flash('You have failed in your attempt to access this content.', 'auth-failed')
@@ -52,3 +54,27 @@ def signin():
 def logout():
     logout_user()
     return redirect(url_for('site.home'))
+
+@auth.route('/pokedex.html', methods=["GET","POST"])
+def searchPokemon():
+  form =searchpokemonform()
+  my_dict = {}
+  if request.method=="POST":
+    poke_name= form.name.data
+
+
+    url = f"https://pokeapi.co/api/v2/pokemon/{poke_name}"
+    res = requests.get(url)
+    if res.ok:
+      data = res.json()
+      my_dict = {
+        'name':data['name'],
+        'ability': data['abilities'][0]['ability']['name'],
+        'img_url': data['sprites']['front_shiny'],
+        'hp': data['stats'][0]['base_stat'],
+        'attack': data['stats'][1]['base_stat'],
+        'defense': data['stats'][2]['base_stat']
+        }
+
+
+  return render_template("pokedex.html", form=form, pokemon=my_dict)

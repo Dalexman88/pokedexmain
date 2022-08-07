@@ -1,0 +1,22 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "askForPassword": true,
+      "driver": "PostgreSQL",
+      "connectString": "postgres://geeehwvs:0DjOc4nFgzRfq5dJM-NApV-XTDf9OJPE@isilo.db.elephantsql.com/geeehwvs",
+      "name": "Pokemon Thing"
+    },
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "askForPassword": true,
+      "driver": "PostgreSQL",
+      "connectString": "postgres://ttjmnume:DeAJAGjtfF4KvdcAgsVZmx4KOINe3hP0@raja.db.elephantsql.com/ttjmnume",
+      "name": "pokedex"
+    }
+  ]
+}

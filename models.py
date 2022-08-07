@@ -8,7 +8,7 @@ from flask_login import LoginManager
 from flask_marshmallow import Marshmallow
 import secrets
 
-# set variables for class instantiation
+
 login_manager = LoginManager()
 ma = Marshmallow()
 db = SQLAlchemy()
