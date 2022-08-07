@@ -33,7 +33,7 @@ def signin():
     form = UserLoginForm()
 
     try:
-        if request.method == 'POST' and form.validate_on_submit():
+      if request.method == 'POST' and form.validate_on_submit():
             email = form.email.data
             password = form.password.data
             print(email,password)
@@ -41,7 +41,7 @@ def signin():
             logged_user = User.query.filter(User.email == email).first()
             if logged_user and check_password_hash(logged_user.password, password):
                 login_user(logged_user)
-                flash('auth-success')
+                flash('Welcome Trainer!', 'auth-success')
                 return redirect(url_for('site.profile'))
             else:
                 flash('You have failed in your attempt to access this content.', 'auth-failed')
@@ -53,4 +53,3 @@ def signin():
 def logout():
     logout_user()
     return redirect(url_for('site.home'))
-
