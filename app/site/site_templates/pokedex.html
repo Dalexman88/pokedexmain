@@ -11,7 +11,7 @@
   {{ form.hidden_tag()}} {{ form.name() }} {{ form.submit()}}
 </form>
 {% if pokemon %}
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 18rem; height: min-content; background-image:url(https://i.pinimg.com/originals/30/59/1c/30591c000544535d644e025503aa3df9.jpg) ; border-radius: 1cm;">
   <img src="{{ pokemon.img_url }}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{ pokemon.name }}</h5>
